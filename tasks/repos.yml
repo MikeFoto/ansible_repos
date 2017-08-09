@@ -1,0 +1,35 @@
+# repos task
+- name: remove old repos
+  file:
+    path:   "/etc/yum.repos.d/{{ item }}"
+    state:  absent
+  with_items:
+    - "{{ repos.names_to_remove  }}"
+
+- name: install the latest version of Company  packages if defined
+  yum:
+    name:  "{{ item.name }}"
+    state: "{{ item.state}}"
+  with_items:
+    - "{{ repos.package_list }}"
+  when:
+    repos.package_list is defined and
+    repos.package_list | length > 1
+
+- name: Import repos keys
+  rpm_key:
+    state: present
+    key:   "{{ item }}"
+  with_items:
+    - "{{ repos.key_list }}"
+
+- name: create repos
+  copy:
+    dest:   "/etc/yum.repos.d/{{ item.name }}.repo"
+    content: "{{ item.content}} "
+    owner:  root
+    group:  root
+    mode:   0644
+    backup: yes
+  with_items:
+    - "{{ repos.add }}"

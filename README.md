@@ -5,3 +5,11 @@ Centos repository management
 * ensure a list of repos are not present
 * ensure list of repos keys is imported
 * Any number of repos with any configuration
+
+# License
+
+MIT
+
+# Author Information
+
+Created by Miguel Rodrigues.

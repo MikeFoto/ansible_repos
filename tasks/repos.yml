@@ -5,11 +5,13 @@
     state:  absent
   with_items:
     - "{{ repos.names_to_remove  }}"
+  when:
+    repos.names_to_remove  is defined
 
 - name: install the latest version of Company  packages if defined
   yum:
     name:  "{{ item.name }}"
-    state: "{{ item.state}}"
+    state: "{{ item.state}} | default('latest') "
   with_items:
     - "{{ repos.package_list }}"
   when:
@@ -33,3 +35,5 @@
     backup: yes
   with_items:
     - "{{ repos.add }}"
+  when:
+    repos.add is defined 

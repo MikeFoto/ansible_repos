@@ -6,6 +6,10 @@ Centos repository management
 * ensure list of repos keys is imported
 * Any number of repos with any configuration
 
+# Usage
+
+Replace the defaults in defaults/main.yml, or provide variables definition by other way ( group_var, command line arguments, .... )
+
 # License
 
 MIT

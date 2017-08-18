@@ -30,7 +30,20 @@ repos:
        mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
        gpgcheck=1
        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+  tests:                         # optional . lists of shell tests
+    - {
+        name: test1,
+        command: "echo 'test1 succeed' "
+      }
+    - {
+        name: test2,
+        command: "echo 'test2 succeed' "
+      }
 ```
+
+# Platforms
+* Centos
+* Debian 
 
 # License
 

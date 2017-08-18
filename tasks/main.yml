@@ -1,5 +1,18 @@
-# repos role
 
 - include: "repos.yml"
 
 # - include: "tests.yml"
+
+# switch repos role  based on os family
+
+- include: "yum.yml"
+  static:  yes
+  when:    ansible_os_family == "CentOS"
+
+- include: "apt.yml"
+  static:  yes
+  when:    ansible_os_family == "Debian"
+
+- include: "tests.yml"
+  static:  yes
+  when: repos.tests is defined

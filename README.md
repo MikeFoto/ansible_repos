@@ -14,7 +14,7 @@ Define the Configuration hash some place . Check Examples at defaults/main.yml.e
 
 ```yaml
 repos:
-  key_list: []                          # list of repository keys to import
+  key_list: []                          # Optional: list of repository keys to import
     # - "http://packages.elastic.co/GPG-KEY-elasticsearch"
   package_list: []                      # Optional list of packages to install .
   #                                       # optionally  with version (default to latest )
@@ -43,7 +43,7 @@ repos:
 
 # Platforms
 * Centos
-* Debian 
+* Debian
 
 # License
 

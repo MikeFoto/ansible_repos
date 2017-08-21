@@ -1,4 +1,13 @@
 # repos task
+- name: Import repos keys
+  rpm_key:
+    state: present
+    key:   "{{ item }}"
+  with_items:
+    - "{{ repos.key_list }}"
+  when:
+    repos.key_list  is defined
+
 - name: remove old repos
   file:
     path:   "/etc/yum.repos.d/{{ item }}"
@@ -18,12 +27,6 @@
     repos.package_list is defined and
     repos.package_list | length > 1
 
-- name: Import repos keys
-  rpm_key:
-    state: present
-    key:   "{{ item }}"
-  with_items:
-    - "{{ repos.key_list }}"
 
 - name: create repos
   copy:
@@ -36,4 +39,4 @@
   with_items:
     - "{{ repos.add }}"
   when:
-    repos.add is defined 
+    repos.add is defined

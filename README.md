@@ -47,7 +47,7 @@ repos:
 
 # License
 
-MIT
+GNU GPLv3 
 
 # Author Information
 
